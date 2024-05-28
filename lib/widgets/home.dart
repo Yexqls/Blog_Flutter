@@ -20,7 +20,14 @@ class MyHome extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              SizedBox(height:40),
+              SizedBox(height: 40),
+              Container(
+                width: 200,
+                height: 150,
+                child: Image.asset(
+                  'images/mando.png', // Aquí reemplaza con la ruta de tu imagen
+                ),
+              ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
@@ -30,13 +37,6 @@ class MyHome extends StatelessWidget {
                     fontSize: 20,
                   ),
                   textAlign: TextAlign.center,
-                ),
-              ),
-              Container(
-                width: 200,
-                height: 150,
-                child: Image.asset(
-                  'images/mando.png', // Aquí reemplaza con la ruta de tu imagen
                 ),
               ),
               Expanded(
