@@ -22,7 +22,7 @@ class _MyFormState extends State<MyForm> {
         height: 500,
         decoration: BoxDecoration(
           border: Border.all(color: Color.fromARGB(255, 36, 36, 36)),
-          color: Color.fromARGB(255, 97, 95, 95),
+          color: Colors.black,
           borderRadius: BorderRadius.circular(20),
         ),
         child: Padding(
@@ -44,6 +44,7 @@ class _MyFormState extends State<MyForm> {
               ),
               TextFormField(
                 controller: controller,
+                style: TextStyle(color: Colors.white),
                 decoration: InputDecoration(
                   labelText: 'Usuario',
                   labelStyle: TextStyle(color: Colors.white),
@@ -51,6 +52,7 @@ class _MyFormState extends State<MyForm> {
               ),
               TextFormField(
                 controller: controllerI,
+                style: TextStyle(color: Colors.white),
                 decoration: InputDecoration(
                   labelText: 'Contraseña',
                   labelStyle: TextStyle(color: Colors.white),
@@ -66,7 +68,7 @@ class _MyFormState extends State<MyForm> {
                     controllerI,
                   );
                 },
-                child: const Text('Iniciar sesión'),
+                child: const Text('INICIAR SESIÓN'),
               ),
               ElevatedButton(
                 onPressed: () {
@@ -75,7 +77,7 @@ class _MyFormState extends State<MyForm> {
                     MaterialPageRoute(builder: (context) => const SecondPage ()),
                   );
                 },
-                child: const Text('Crear cuenta'),
+                child: const Text('CREAR CUENTA'),
               ),
             ],
           ),

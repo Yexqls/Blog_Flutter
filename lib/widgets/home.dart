@@ -34,7 +34,7 @@ class MyHome extends StatelessWidget {
                   'LOGIN DE LA CUEVA DEL GAMER',
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 20,
+                    fontSize: 40,
                   ),
                   textAlign: TextAlign.center,
                 ),

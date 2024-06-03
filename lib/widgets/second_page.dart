@@ -6,7 +6,17 @@ class SecondPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.green,
+      appBar: AppBar(
+        title: Text('Crear usuario'),
+        backgroundColor: Color.fromARGB(255, 62, 192, 37),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+      ),
+      backgroundColor: Color.fromARGB(255, 37, 55, 48),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -65,15 +75,25 @@ class SecondPage extends StatelessWidget {
                   obscureText: true,
                 ),
                 SizedBox(height: 16.0),
-                ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.black,
-                    padding: EdgeInsets.symmetric(horizontal: 50, vertical: 10),
-                  ),
-                  child: Text(
-                    'REGISTRARSE',
-                    style: TextStyle(color: Colors.white),
+                Center(
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.white, // Fondo del botón
+                      foregroundColor: Colors.black, // Color del texto
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 32, vertical: 12),
+                    ),
+                    onPressed: () {
+                      // Acción al presionar el botón
+                    },
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text('REGISTARSE'),
+                        SizedBox(width: 10),
+                        Icon(Icons.arrow_forward),
+                      ],
+                    ),
                   ),
                 ),
               ],
