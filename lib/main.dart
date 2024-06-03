@@ -1,4 +1,5 @@
 import 'package:blog_aplication/widgets/home.dart';
+import 'package:blog_aplication/widgets/mypublications_page.dart';
 import 'package:flutter/material.dart';
 import 'package:blog_aplication/routes/routes.dart';
 void main() {
@@ -13,7 +14,9 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'My Aplicacion',
-      home: MyHome(),
+      
+     // home: MyHome(),
+     home: MyPublicationsUser(),
     );
   }
 }
