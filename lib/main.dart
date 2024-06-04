@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       title: 'My Aplicacion',
       
      // home: MyHome(),
-     home: MyPublicationsUser(),
+     home: ThirdPage(),
     );
   }
 }

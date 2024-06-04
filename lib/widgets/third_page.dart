@@ -1,7 +1,33 @@
+import 'package:blog_aplication/widgets/mypublications_page.dart';
+import 'package:blog_aplication/widgets/publications_page.dart';
+import 'package:blog_aplication/widgets/user_page.dart';
 import 'package:flutter/material.dart';
 
 class ThirdPage extends StatelessWidget {
   const ThirdPage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Perfil',
+      theme: ThemeData(
+        primarySwatch: Colors.green,
+      ),
+      debugShowCheckedModeBanner: false, // Ocultar la etiqueta DEBUG
+      routes: {
+        '/': (context) => ThirdScreen(),
+        '/myuser': (context) => MyUser(),
+      },
+    );
+  }
+}
+
+class ThirdScreen extends StatefulWidget {
+  @override
+  _ThirdScreenState createState() => _ThirdScreenState();
+}
+
+class _ThirdScreenState extends State<ThirdScreen> {
 
   @override
   Widget build(BuildContext context) {
@@ -12,12 +38,19 @@ class ThirdPage extends StatelessWidget {
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
-            Navigator.pop(context);
+            Navigator.pushNamed(context, '/myuser');
           },
         ),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.account_circle),
+            onPressed: () {
+              // Acciones del boton
+            },
+          ),
+        ],
       ),
-            backgroundColor: Color.fromARGB(255, 37, 55, 48),
-
+      backgroundColor: Color.fromARGB(255, 37, 55, 48),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -25,7 +58,7 @@ class ThirdPage extends StatelessWidget {
             CircleAvatar(
               radius: 50,
               backgroundImage: AssetImage(
-                  'assets/profile_image.png'), // Reemplaza con tu imagen
+                  'images/perfilProfesor.jpg'), // Reemplaza con tu imagen
             ),
             SizedBox(height: 20),
             Container(
@@ -72,7 +105,7 @@ class ThirdPage extends StatelessWidget {
                             EdgeInsets.symmetric(horizontal: 32, vertical: 12),
                       ),
                       onPressed: () {
-                        // Acción al presionar el botón
+                        Navigator.pushNamed(context, '/myuser'); // Acción al presionar el botón
                       },
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
@@ -89,25 +122,6 @@ class ThirdPage extends StatelessWidget {
             ),
           ],
         ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Posts',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.list),
-            label: 'Mis Posts',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Perfil',
-          ),
-        ],
-        selectedItemColor: Colors.green,
-        backgroundColor: Color.fromARGB(255, 0, 0, 0), // Fondo negro
-        unselectedItemColor: Colors.white,
       ),
     );
   }
