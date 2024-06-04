@@ -1,3 +1,4 @@
+import 'package:blog_aplication/widgets/edit_post.dart';
 import 'package:blog_aplication/widgets/home.dart';
 import 'package:blog_aplication/widgets/mypublications_page.dart';
 import 'package:flutter/material.dart';
@@ -14,9 +15,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'My Aplicacion',
-      
-     // home: MyHome(),
-     home: ThirdPage(),
+      home: EditPost(),
     );
   }
 }
