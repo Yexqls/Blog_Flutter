@@ -30,6 +30,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _selectedIndex = 0; // Inicialmente seleccionamos el botón "Perfil"
+  List<bool> _liked = [false, false, false]; // Estado del color del icono
 
   void _onItemTapped(int index) {
     // setState(() {
@@ -47,6 +48,12 @@ class _MyHomePageState extends State<MyHomePage> {
         Navigator.pushNamed(context, '/perfil');
         break;
     }
+  }
+
+  void _toggleIconColor(int index) {
+    setState(() {
+      _liked[index] = !_liked[index];
+    });
   }
 
   @override
@@ -89,9 +96,12 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                           subtitle: Text('Vic01',
                               style: TextStyle(color: Colors.white)),
-                          trailing: Icon(Icons.thumb_up, color: Colors.white),
+                          trailing: Icon(
+                            Icons.thumb_up,
+                            color: _liked[0] ? Colors.blue : Colors.white,
+                          ),
                           onTap: () {
-                            // Handle tap
+                            _toggleIconColor(0);
                           },
                         ),
                         Padding(
@@ -133,9 +143,12 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                           subtitle: Text('Yucli03',
                               style: TextStyle(color: Colors.white)),
-                          trailing: Icon(Icons.thumb_up, color: Colors.white),
+                          trailing: Icon(
+                            Icons.thumb_up,
+                            color: _liked[1] ? Colors.blue : Colors.white,
+                          ),
                           onTap: () {
-                            // Handle tap
+                            _toggleIconColor(1);
                           },
                         ),
                         Padding(
@@ -177,9 +190,12 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                           subtitle: Text('Yucli03',
                               style: TextStyle(color: Colors.white)),
-                          trailing: Icon(Icons.thumb_up, color: Colors.white),
+                          trailing: Icon(
+                            Icons.thumb_up,
+                            color: _liked[2] ? Colors.blue : Colors.white,
+                          ),
                           onTap: () {
-                            // Handle tap
+                            _toggleIconColor(2);
                           },
                         ),
                         Padding(

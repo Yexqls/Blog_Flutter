@@ -1,3 +1,4 @@
+import 'package:blog_aplication/routes/routes.dart';
 import 'package:blog_aplication/widgets/mypublications_page.dart';
 import 'package:blog_aplication/widgets/publications_page.dart';
 import 'package:flutter/material.dart';
@@ -18,6 +19,8 @@ class MyUser extends StatelessWidget {
         '/': (context) => ProfileScreen(),
         '/posts': (context) => MyPublications(),
         '/MisPosts': (context) => MyPublicationsUser(),
+        '/EditarPerfil': (context) => ThirdPage(),
+        '/Login': (context) => MyHome(),
       },
     );
   }
@@ -116,7 +119,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     SizedBox(height: 30),
                     ElevatedButton.icon(
                       onPressed: () {
-                        // Handle Edit Data button press
+                        Navigator.pushNamed(context, '/EditarPerfil');
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.white,
@@ -132,7 +135,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     SizedBox(height: 20),
                     ElevatedButton(
                       onPressed: () {
-                        // Handle Close Session button press
+                        Navigator.pushNamed(context, '/Login'); // Handle Close Session button press
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.black,

@@ -17,13 +17,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'My Aplicacion',
-      
-      //home: MyHome(),
-     //home: MyPublicationsUser(),
-home: EditPost(),
-//home: MyPublications(),
-//home: EditPost()
-//home: SecondPage(),
+      home: EditPost(),
     );
   }
 }
