@@ -70,14 +70,14 @@ class _MyFormState extends State<MyForm> {
                 },
                 child: const Text('INICIAR SESIÓN'),
               ),
-              ElevatedButton(
+              TextButton(
                 onPressed: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => const SecondPage ()),
                   );
                 },
-                child: const Text('CREAR CUENTA'),
+                child: Text('CREAR CUENTA', style: TextStyle(color: Colors.white),),
               ),
             ],
           ),
