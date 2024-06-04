@@ -20,9 +20,10 @@ class MyApp extends StatelessWidget {
       
       //home: MyHome(),
      //home: MyPublicationsUser(),
-//home: NewPost(),
+home: EditPost(),
 //home: MyPublications(),
-home: EditPost()
+//home: EditPost()
+//home: SecondPage(),
     );
   }
 }
