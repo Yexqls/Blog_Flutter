@@ -1,3 +1,5 @@
+import 'package:blog_aplication/widgets/edit_post.dart';
+import 'package:blog_aplication/widgets/new_post.dart';
 import 'package:blog_aplication/widgets/publications_page.dart';
 import 'package:blog_aplication/widgets/user_page.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +17,8 @@ class MyPublicationsUser extends StatelessWidget {
         '/': (context) => MisPostsScreen(),
         '/posts': (context) => MyPublications(),
         '/perfil': (context) => MyUser(),
+        '/NuevoPost': (context) => NewPost(),
+        '/EditarPost': (context) => EditPost(),
       },
     );
   }
@@ -97,7 +101,7 @@ class _MisPostsScreenState extends State<MisPostsScreen> {
                         IconButton(
                           icon: Icon(Icons.edit, color: Colors.white),
                           onPressed: () {
-                            // Edit action
+                            Navigator.pushNamed(context, '/EditarPost'); // Edit action
                           },
                         ),
                         IconButton(
@@ -137,7 +141,7 @@ class _MisPostsScreenState extends State<MisPostsScreen> {
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            // Add new post action
+            Navigator.pushNamed(context, '/NuevoPost');
           },
           backgroundColor: Colors.white,
           child: CircleAvatar(

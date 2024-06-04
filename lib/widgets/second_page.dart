@@ -1,8 +1,29 @@
+import 'package:blog_aplication/widgets/home.dart';
 import 'package:flutter/material.dart';
 
 class SecondPage extends StatelessWidget {
   const SecondPage({Key? key}) : super(key: key);
 
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Registro',
+      debugShowCheckedModeBanner: false, // Ocultar la etiqueta DEBUG
+      initialRoute: '/',
+      routes: {
+        '/': (context) => RegistrationUserScreen(),
+        '/Login': (context) => MyHome(),
+      },
+    );
+  }
+}
+
+class RegistrationUserScreen extends StatefulWidget {
+  @override
+  _RegistrationUserScreenState createState() => _RegistrationUserScreenState();
+}
+
+class _RegistrationUserScreenState extends State<RegistrationUserScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -84,7 +105,7 @@ class SecondPage extends StatelessWidget {
                           EdgeInsets.symmetric(horizontal: 32, vertical: 12),
                     ),
                     onPressed: () {
-                      // Acción al presionar el botón
+                      Navigator.pushNamed(context, '/Login'); 
                     },
                     child: Row(
                       mainAxisSize: MainAxisSize.min,

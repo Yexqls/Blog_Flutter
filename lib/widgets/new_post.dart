@@ -1,7 +1,9 @@
+import 'package:blog_aplication/widgets/mypublications_page.dart';
+import 'package:blog_aplication/widgets/publications_page.dart';
 import 'package:flutter/material.dart';
 
 class NewPost extends StatefulWidget {
-  const NewPost({super.key});
+  const NewPost({Key? key}) : super(key: key);
 
   @override
   _NewPostState createState() => _NewPostState();
@@ -14,12 +16,39 @@ class _NewPostState extends State<NewPost> {
 
   @override
   Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Nuevo Post',
+      theme: ThemeData(
+        primarySwatch: Colors.green,
+      ),
+      debugShowCheckedModeBanner: false, // Ocultar la etiqueta DEBUG
+      routes: {
+        '/': (context) => NewPostScreen(),
+        '/MisPosts': (context) => MyPublicationsUser(),
+        '/posts': (context) => MyPublications(),
+      },
+    );
+  }
+}
+
+class NewPostScreen extends StatefulWidget {
+  @override
+  _NewPostScreenState createState() => _NewPostScreenState();
+}
+
+class _NewPostScreenState extends State<NewPostScreen> {
+  String? _selectedPlatform;
+  final TextEditingController _gameNameController = TextEditingController();
+  final TextEditingController _descriptionController = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
-            // Handle back button press
+            Navigator.pushNamed(context, '/MisPosts');
           },
         ),
         title: Text('Nuevo post'),
@@ -146,7 +175,7 @@ class _NewPostState extends State<NewPost> {
               SizedBox(height: 16),
               ElevatedButton(
                 onPressed: () {
-                  // Handle publish button press
+                  Navigator.pushNamed(context, '/posts');
                 },
                 child: Text(
                   'PUBLICAR',

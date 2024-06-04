@@ -1,7 +1,9 @@
+import 'package:blog_aplication/widgets/mypublications_page.dart';
+import 'package:blog_aplication/widgets/publications_page.dart';
 import 'package:flutter/material.dart';
 
 class EditPost extends StatefulWidget {
-  const EditPost({super.key});
+  const EditPost({Key? key}) : super(key: key);
 
   @override
   _EditPostState createState() => _EditPostState();
@@ -16,12 +18,29 @@ class _EditPostState extends State<EditPost> {
   Widget build(BuildContext context) {
     final double screenHeight = MediaQuery.of(context).size.height;
     final double topImageHeight = screenHeight / 4;
+    return MaterialApp(
+      title: 'Editar Posts',
+      theme: ThemeData(
+        primarySwatch: Colors.green,
+      ),
+      debugShowCheckedModeBanner: false, // Ocultar la etiqueta DEBUG
+      routes: {
+        '/': (context) => EditPostScreen(),
+        '/MisPosts': (context) => MyPublicationsUser(),
+      },
+    );
+  }
+
+  @override
+  Widget buildEditPostScreen(BuildContext context) {
+    final double screenHeight = MediaQuery.of(context).size.height;
+    final double topImageHeight = screenHeight / 4;
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
-            // Handle back button press
+            Navigator.pushNamed(context, '/MisPosts');
           },
         ),
         title: Text('Editar post'),
@@ -155,10 +174,10 @@ class _EditPostState extends State<EditPost> {
               SizedBox(height: 16),
               ElevatedButton(
                 onPressed: () {
-                  // Handle publish button press
+                  Navigator.pushNamed(context, '/MisPosts');
                 },
                 child: Text(
-                  'PUBLICAR',
+                  'ACTUALIZAR DATOS',
                   style: TextStyle(color: Colors.black),
                 ),
               ),
@@ -167,5 +186,12 @@ class _EditPostState extends State<EditPost> {
         ),
       ),
     );
+  }
+}
+
+class EditPostScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return EditPost().createState().buildEditPostScreen(context);
   }
 }
