@@ -33,7 +33,7 @@ class _RegistrationUserScreenState extends State<RegistrationUserScreen> {
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
-            Navigator.pop(context);
+            Navigator.pushNamed(context, '/Login');
           },
         ),
       ),
@@ -110,7 +110,7 @@ class _RegistrationUserScreenState extends State<RegistrationUserScreen> {
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Text('REGISTARSE'),
+                        Text('REGISTRARSE'),
                         SizedBox(width: 10),
                         Icon(Icons.arrow_forward),
                       ],

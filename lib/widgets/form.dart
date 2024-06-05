@@ -1,3 +1,5 @@
+import 'package:blog_aplication/widgets/user_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:blog_aplication/routes/routes.dart';
 
@@ -9,10 +11,44 @@ class MyForm extends StatefulWidget {
 }
 
 class _MyFormState extends State<MyForm> {
-  final String pass = '1234';
-  final String usuario = 'yucli';
-  final TextEditingController controllerI = TextEditingController();
-  final TextEditingController controller = TextEditingController();
+  // text controllers
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+
+  Future signIn() async {
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: _emailController.text.trim(),
+        password: _passwordController.text.trim(),
+      );
+      // Si la autenticación es exitosa, navega a la siguiente página
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const MyUser()),
+      );
+    } on FirebaseAuthException catch (e) {
+      // Manejo de errores de autenticación
+      String errorMessage;
+      switch (e.code) {
+        case 'user-not-found':
+          errorMessage = 'Usuario no encontrado';
+          break;
+        case 'wrong-password':
+          errorMessage = 'Contraseña incorrecta';
+          break;
+        default:
+          errorMessage = 'Error de inicio de sesión';
+      }
+      mostrarDialogo(context, 'Error', errorMessage);
+    }
+  }
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +79,7 @@ class _MyFormState extends State<MyForm> {
                 ),
               ),
               TextFormField(
-                controller: controller,
+                controller: _emailController,
                 style: TextStyle(color: Colors.white),
                 decoration: InputDecoration(
                   labelText: 'Usuario',
@@ -51,7 +87,8 @@ class _MyFormState extends State<MyForm> {
                 ),
               ),
               TextFormField(
-                controller: controllerI,
+                obscureText: true,
+                controller: _passwordController,
                 style: TextStyle(color: Colors.white),
                 decoration: InputDecoration(
                   labelText: 'Contraseña',
@@ -59,25 +96,17 @@ class _MyFormState extends State<MyForm> {
                 ),
               ),
               ElevatedButton(
-                onPressed: () {
-                  validarCredenciales(
-                    context,
-                    usuario,
-                    pass,
-                    controller,
-                    controllerI,
-                  );
-                },
+                onPressed: signIn,
                 child: const Text('INICIAR SESIÓN'),
               ),
               TextButton(
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const SecondPage ()),
+                    MaterialPageRoute(builder: (context) => const SecondPage()),
                   );
                 },
-                child: Text('CREAR CUENTA', style: TextStyle(color: Colors.white),),
+                child: Text('CREAR CUENTA', style: TextStyle(color: Colors.white)),
               ),
             ],
           ),
@@ -98,10 +127,6 @@ void mostrarDialogo(BuildContext context, String titulo, String contenido) {
           TextButton(
             onPressed: () {
               Navigator.of(context).pop();
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const ThirdPage ()),
-              );
             },
             child: const Text('Aceptar'),
           ),
@@ -109,33 +134,4 @@ void mostrarDialogo(BuildContext context, String titulo, String contenido) {
       );
     },
   );
-}
-
-void validarCredenciales(
-  BuildContext context,
-  String usuario,
-  String pass,
-  TextEditingController controller,
-  TextEditingController controllerI,
-) {
-  if (controller.text.isEmpty || controllerI.text.isEmpty) {
-    mostrarDialogo(
-      context,
-      'Error',
-      'Por favor, ingrese el usuario y contraseña',
-    );
-  } else {
-    if (controller.text == usuario && controllerI.text == pass) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => const SecondPage()),
-      );
-    } else {
-      mostrarDialogo(
-        context,
-        'Datos incorrectos',
-        'El usuario o la contraseña son incorrectos',
-      );
-    }
-  }
 }

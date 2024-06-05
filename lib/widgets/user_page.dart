@@ -1,6 +1,7 @@
 import 'package:blog_aplication/routes/routes.dart';
 import 'package:blog_aplication/widgets/mypublications_page.dart';
 import 'package:blog_aplication/widgets/publications_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class MyUser extends StatelessWidget {
@@ -33,6 +34,8 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   int _selectedIndex = 2; // Inicialmente seleccionamos el botón "Perfil"
+
+  final user = FirebaseAuth.instance.currentUser!;
 
   void _onItemTapped(int index) {
     switch (index) {
@@ -110,7 +113,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ),
                     SizedBox(height: 10),
                     Text(
-                      'Vic01@gmail.com',
+                      user.email!,
                       style: TextStyle(
                         fontSize: 16,
                         color: Colors.white,
@@ -135,7 +138,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     SizedBox(height: 20),
                     ElevatedButton(
                       onPressed: () {
-                        Navigator.pushNamed(context, '/Login'); // Handle Close Session button press
+                        FirebaseAuth.instance.signOut();
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.black,

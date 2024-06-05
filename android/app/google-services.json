@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "263187104449",
+    "project_id": "gamer-flutter",
+    "storage_bucket": "gamer-flutter.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:263187104449:android:10110120e9882485fd0a40",
+        "android_client_info": {
+          "package_name": "com.example.blog_aplication"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJtaMmY6uyO_TG_WYaI7C3Y-yfFs6yvPo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

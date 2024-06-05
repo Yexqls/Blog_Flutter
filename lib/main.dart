@@ -1,3 +1,6 @@
+import 'package:blog_aplication/widgets/main_page.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 import 'package:blog_aplication/widgets/edit_post.dart';
 import 'package:blog_aplication/widgets/home.dart';
 import 'package:blog_aplication/widgets/mypublications_page.dart';
@@ -5,7 +8,12 @@ import 'package:blog_aplication/widgets/new_post.dart';
 import 'package:blog_aplication/widgets/user_page.dart';
 import 'package:flutter/material.dart';
 import 'package:blog_aplication/routes/routes.dart';
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
   runApp(const MyApp());
 }
 
@@ -17,7 +25,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'My Aplicacion',
-      home: MyHome(),
+      home: MainPage(),
     );
   }
 }
