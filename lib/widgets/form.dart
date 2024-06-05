@@ -67,13 +67,13 @@ class _MyFormState extends State<MyForm> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               const Text(
-                'Inicio de sesion',
+                'Inicio de sesión',
                 style: TextStyle(
                   color: Color.fromRGBO(255, 255, 255, 1),
                 ),
               ),
               const Text(
-                'Por favor inicie sesion para continuar',
+                'Por favor inicie sesión para continuar',
                 style: TextStyle(
                   color: Colors.white,
                 ),
